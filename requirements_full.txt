@@ -1,0 +1,31 @@
+# Full requirements with optional packages for advanced features
+# Use this if you want all features including mapping and data analysis
+
+fastapi==0.104.1
+uvicorn==0.24.0
+sqlalchemy==2.0.23
+alembic==1.12.1
+pymysql==1.1.0
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+httpx==0.25.2
+jinja2==3.1.2
+aiofiles==23.2.1
+python-dateutil==2.8.2
+pytz==2023.3
+requests==2.31.0
+
+# Optional packages for advanced features
+# Uncomment these if you want mapping and data analysis features
+# folium==0.15.0
+# geopandas==0.14.1
+# shapely==2.0.2
+# pandas==2.1.4
+# numpy==1.25.2
+# matplotlib==3.8.2
+# seaborn==0.13.0
+# plotly==5.17.0

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Area Tracking - Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/css/map.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>GPS Area Tracking System</h1>
+            <div class="header-controls">
+                <button id="refreshBtn" class="btn btn-primary">Refresh</button>
+                <button id="toggleAreasBtn" class="btn btn-secondary">Toggle Areas</button>
+                <button id="toggleRoutesBtn" class="btn btn-secondary">Toggle Routes</button>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Vehicle Status</h3>
+                <div id="vehicleStats" class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Total:</span>
+                        <span class="stat-value" id="totalVehicles">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Active:</span>
+                        <span class="stat-value" id="activeVehicles">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Idle:</span>
+                        <span class="stat-value" id="idleVehicles">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Area Management</h3>
+                <div class="area-controls">
+                    <button id="addAreaBtn" class="btn btn-success">Add Area</button>
+                    <select id="areaTypeSelect">
+                        <option value="entrance">Entrance Area</option>
+                        <option value="alert">Alert Area</option>
+                        <option value="critical">Critical Area</option>
+                        <option value="checkpoint">Checkpoint Area</option>
+                    </select>
+                </div>
+                <div id="areaList" class="area-list"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Recent Alerts</h3>
+                <div id="alertsList" class="alerts-list"></div>
+            </div>
+        </aside>
+
+        <!-- Main Map -->
+        <main class="main-content">
+            <div id="map" class="map-container"></div>
+            
+            <!-- Vehicle Info Panel -->
+            <div id="vehicleInfo" class="vehicle-info-panel" style="display: none;">
+                <h4 id="vehicleInfoTitle">Vehicle Information</h4>
+                <div id="vehicleInfoContent"></div>
+                <button id="closeVehicleInfo" class="btn btn-close">×</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Area Creation Modal -->
+    <div id="areaModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Area</h3>
+                <button id="closeAreaModal" class="btn btn-close">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="areaForm">
+                    <div class="form-group">
+                        <label for="areaName">Area Name:</label>
+                        <input type="text" id="areaName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="areaType">Area Type:</label>
+                        <select id="areaType" required>
+                            <option value="entrance">Entrance Area</option>
+                            <option value="alert">Alert Area</option>
+                            <option value="critical">Critical Area</option>
+                            <option value="checkpoint">Checkpoint Area</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="areaShape">Shape:</label>
+                        <select id="areaShape" required>
+                            <option value="polygon">Polygon</option>
+                            <option value="circle">Circle</option>
+                            <option value="rectangle">Rectangle</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bufferDistance">Buffer Distance (meters):</label>
+                        <input type="number" id="bufferDistance" min="0" value="0">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Create Area</button>
+                        <button type="button" id="cancelAreaModal" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/map.js"></script>
+</body>
+</html>

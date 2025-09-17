@@ -1,0 +1,490 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 60px 1fr;
+    height: 100vh;
+    gap: 0;
+}
+
+/* Header */
+.header {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.header-controls {
+    display: flex;
+    gap: 10px;
+}
+
+/* Sidebar */
+.sidebar {
+    background: white;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat-item {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 4px solid #667eea;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Area Controls */
+.area-controls {
+    margin-bottom: 15px;
+}
+
+.area-controls select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+}
+
+.area-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.area-item {
+    background: #f8f9fa;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border-left: 4px solid #28a745;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.area-item:hover {
+    background: #e9ecef;
+    transform: translateX(2px);
+}
+
+.area-item.entrance {
+    border-left-color: #007bff;
+}
+
+.area-item.alert {
+    border-left-color: #ffc107;
+}
+
+.area-item.critical {
+    border-left-color: #dc3545;
+}
+
+.area-item.checkpoint {
+    border-left-color: #6f42c1;
+}
+
+.area-name {
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.area-type {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+/* Alerts List */
+.alerts-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.alert-item {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border-left: 4px solid #f39c12;
+}
+
+.alert-item.critical {
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    border-left-color: #dc3545;
+}
+
+.alert-item.resolved {
+    background: #d4edda;
+    border-color: #c3e6cb;
+    border-left-color: #28a745;
+    opacity: 0.7;
+}
+
+.alert-message {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.alert-time {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Main Content */
+.main-content {
+    position: relative;
+    background: white;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+/* Vehicle Info Panel */
+.vehicle-info-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding: 20px;
+    min-width: 300px;
+    max-width: 400px;
+    z-index: 1000;
+}
+
+.vehicle-info-panel h4 {
+    color: #667eea;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.vehicle-info-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.info-item {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.info-label {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+}
+
+.info-value {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5a6fd8;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-close {
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.btn-close:hover {
+    background: #c82333;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    color: #667eea;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 1fr;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+    
+    .header-controls {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .vehicle-info-panel {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        top: auto;
+        max-width: calc(100vw - 40px);
+    }
+}
+
+/* Map Markers */
+.vehicle-marker {
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.vehicle-marker.active {
+    background: #28a745;
+}
+
+.vehicle-marker.idle {
+    background: #ffc107;
+}
+
+.vehicle-marker.inactive {
+    background: #6c757d;
+}
+
+.vehicle-marker.maintenance {
+    background: #17a2b8;
+}
+
+.vehicle-marker.breakdown {
+    background: #dc3545;
+}
+
+/* Route Lines */
+.route-line {
+    stroke-width: 3;
+    stroke-opacity: 0.8;
+}
+
+.route-line.active {
+    stroke: #28a745;
+}
+
+.route-line.idle {
+    stroke: #ffc107;
+}
+
+.route-line.inactive {
+    stroke: #6c757d;
+}
+
+/* Area Overlays */
+.area-overlay {
+    fill-opacity: 0.3;
+    stroke-width: 2;
+}
+
+.area-overlay.entrance {
+    fill: #007bff;
+    stroke: #0056b3;
+}
+
+.area-overlay.alert {
+    fill: #ffc107;
+    stroke: #e0a800;
+}
+
+.area-overlay.critical {
+    fill: #dc3545;
+    stroke: #bd2130;
+}
+
+.area-overlay.checkpoint {
+    fill: #6f42c1;
+    stroke: #5a32a3;
+}
